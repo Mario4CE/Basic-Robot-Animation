@@ -1,2 +1,2 @@
 # Robot-Animation
-A little animation for a robot
+A small animation for a robot
