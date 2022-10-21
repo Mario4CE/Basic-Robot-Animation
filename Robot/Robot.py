@@ -2,18 +2,20 @@
 """
 Bibliotecas usadas
 """
-from multiprocessing.resource_sharer import stop #Funcionpra que el robot pare de moverse
-from tkinter import * #Interfaz grafica
-from tkinter import PhotoImage, messagebox, ttk #interfaz grafica
-from turtle import forward
-import pygame #reproductor de musica
-import sys
-import os #Ubicacio de archivos
-import time #Funcion para el tiempo
-import csv #Funcion donde se guardara la informacion del robot
+import csv  # Funcion donde se guardara la informacion del robot
+import os  # Ubicacio de archivos
+from PIL import Image, ImageTk
 import threading
+import time  # Funcion para el tiempo
+from multiprocessing.resource_sharer import \
+    stop  # Funcionpra que el robot pare de moverse
 from threading import Thread
+from tkinter import *  # Interfaz grafica
+from tkinter import PhotoImage, messagebox, ttk  # interfaz grafica
+from turtle import forward
+import PIL.Image
 
+import pygame  # reproductor de musica
 
 """	
 Global variables
@@ -26,7 +28,16 @@ Funcion que carga la imagen de fondo
 def Fondo(img):  
     ruta = os.path.join("Adicionales",img) 
     imagen = PhotoImage(file=ruta)
-    return imagen               
+    return imagen 
+
+def Imagenes(img,size):
+    ruta = None
+    if size != None:
+        ruta = PIL.Image.open("Adicionales/"+img).resize((size))
+    else:
+        ruta = PIL.Image.open("Adicionales/"+img)
+    imagen = ImageTk.PhotoImage(ruta)
+    return imagen              
 
 """
 leerRobot:Funcion que lee el archivo de texto con las caracteristica del robot
@@ -56,13 +67,17 @@ Todos los set and get por si llegaran a ser nesesarios
 Y tambien todas las ordenes que se le pueden dar al robot
 """       
 class Robot:
-    def __init__(self,nombre,imagen,fecha,indicador,vetana_robot):
+    def __init__(self,nombre,imagen,fecha,indicador,ventana_robot,consola):
         self.nombre = nombre
         self.imagen = imagen
         self.fecha = fecha
         self.indicador = indicador
-        self.vetana_robot = vetana_robot
+        self.ventana_robot = ventana_robot
         self.Window()
+        self.consola = consola
+        self.Window1()
+        self.comando = ""
+
 
     """
     Window: ventana principal
@@ -73,11 +88,67 @@ class Robot:
     def Window(self):
 
         self.imagen1 = Fondo("Fondo.png")
-        self.Lbl = Label(self.vetana_robot, image = self.imagen1).place(x = 0,y = 0)
-    
+        self.Lbl = Label(self.ventana_robot, image = self.imagen1).place(x = 0,y = 0)
+        self.ventana_robot.update()
+
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot2 = Imagenes("derecha 1.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot2)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+
+        
+
+        
+
+
+    """
+    Drak: Funcion hace que simule que el robot se va a descanzar cerrando la ventana en donde el se encuentra
+    E: No recibe parametros
+    S: No retorna nada
+    R: No tiene restricciones
+    """
     def Dark(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound-largo.mp3')
+        pygame.mixer.music.play()
+
         messagebox.showinfo("","I am going to sleep")
-        self.vetana_robot.destroy()
+
+        self.ventana_robot.destroy()
+        self.consola.destroy()
+        escribirR()
+
+    """
+    Good_morning: Funcion que hace que el robot reaccione al comando good morning saludando
+    E: No recibe parametros
+    S: No retorna nada
+    R: No tiene restricciones
+    """
+    def Good_morning(self):
+
+        messagebox.showinfo("","Good morning today is " + time.asctime())
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound-largo.mp3')
+        pygame.mixer.music.play()
+
+        self.Nombre = Label(self.ventana_robot, font=("Arial ",20), text="Nombre: " + robot_info[0][0]
+             ,height = 1,width = 15)
+        self.Nombre.place(x = 50, y = 50)
+
+        self.Fecha = Label(self.ventana_robot, font=("Arial ",20), text="Fecha de creacion: " + robot_info[0][2]
+             ,height = 1,width = 35)
+        self.Fecha.place(x = 150, y = 150)
 
     #Obtiene el nombre del robot
     def get_nombre(self):
@@ -114,7 +185,26 @@ class Robot:
     R: No aplica
     """
     def sayhello(self):
-        messagebox.showinfo("","Hi!!!\nMy name is " + robot_info[0][0] + " and today is " + time.asctime())
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 1.mp3')
+        pygame.mixer.music.play()
+
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot2 = Imagenes("derecha 1.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot2)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(1)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+
+        messagebox.showinfo("","Hi!!!\nMy name is " + robot_info[0][0] + " \nand today is " + time.asctime())
 
     """
     built: Funcion que hace que el robot diga su fecha de creacion
@@ -123,6 +213,10 @@ class Robot:
     R: No aplica
     """
     def built(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
+
         messagebox.showinfo("","I was created on"  + robot_info[0][2])
         messagebox.showinfo("","Im ready to play with you")
 
@@ -138,9 +232,18 @@ class Robot:
         self.Stop()
         print("I am moving backward") 
 
-    #Funcion que detiene el robot
-    def Stop(self): # falta logica de validacion para las imagenes
+    """
+    Stop: Funcion que hace que el robot se detenga
+    E: self
+    S: Mensaje de detencion
+    R: No aplica
+    """
+    def Stop(self): 
         stop()
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
         messagebox.showinfo("I am stoped")
 
     #Funcion que hace que gire el robot hacia la derecha
@@ -175,7 +278,7 @@ class Robot:
     def music_on(self):
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/Welcome to the Jungle.mp3')
-        pygame.mixer.music.play()
+        pygame.mixer.music.play(-1)
         messagebox.showinfo("","I am playing music")
 
     """
@@ -188,12 +291,21 @@ class Robot:
         pygame.mixer.music.stop()
         messagebox.showinfo("","I am stop playing music")
     
-    #Funcion que enciende la luz
-    def light_on(self): # falta logica de validacion para las imagenes
-        self.Window(self)
-        messagebox.showinfo("","I am turning on the light")
+    """
+    light_on: Funcion que hace que el robot nos diga que esta listo para jugar
+    E: self
+    S: Mensaje de listo para jugar
+    R: No aplica
+    """
+    def light_on(self):
+        self.Good_morning()
     
-    #Funcion que apaga la luz
+    """
+    light_off: Funcion que hace que el robot nos diga que se va a dormir
+    E: self
+    S: Mensaje de que se va a dormir
+    R: No aplica
+    """
     def light_off(self):
         messagebox.showinfo("","I am turning off the light")
         self.Dark()
@@ -205,8 +317,27 @@ class Robot:
     R: No aplica
     """
   
-    def smile(self): #falta que se acyualize el indicador de animo
+    def smile(self):
+      
       robot_info[0][3] = str(int(robot_info[0][3]) + 5)
+
+      pygame.mixer.init()
+      pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+      pygame.mixer.music.play()
+
+      self.feliz = Imagenes("feliz.png",(100,100))
+      self.IMG = Label(self.ventana_robot, image = self.feliz)
+      self.IMG.place(x = 350, y =100)
+      time.sleep(2)
+      self.ventana_robot.update()
+
+
+      messagebox.showinfo("","I am smiling")
+      
+      self.Indicador = Label(self.ventana_robot, font=("Arial ",20), text="Indicador: " + robot_info[0][3]
+             ,height=1,width=15)
+      self.Indicador.place(x=300,y=50)
+
       messagebox.showinfo("","I am very happy")
 
       if int(robot_info[0][3]) >= 61 and int(robot_info[0][3]) <= 100:
@@ -234,8 +365,18 @@ class Robot:
     S: Mensaje de animo
     R: No aplica
     """	
-    def cry(self): #falta que se acyualize el indicador de animo
-        robot_info[0][3] = str(int(robot_info[0][3]) - 5)
+    def cry(self): 
+
+        robot_info[0][3] = str(int(robot_info[0][3]) - 5) 
+
+        self.Indicador = Label(self.ventana_robot, font=("Arial ",20), text="Indicador: " + robot_info[0][3]
+             ,height=1,width=15)
+        self.Indicador.place(x=300,y=50)
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
+
         messagebox.showinfo("","I am crying")
 
         if int(robot_info[0][3]) >= 61 and int(robot_info[0][3]) <= 100:
@@ -257,21 +398,6 @@ class Robot:
         else:
             messagebox.showerror("Error","I dont know how I feel")
 
-"""
---> class Shell: esta clase se encargara de ejecutar los mandos que el usuario ingrese
--> Como funciones posee:
-Window: Funcion que crea la ventana de la shell, y se le dan algunas carcteristicas como una entrada de texto
-y un boton para ejecutar el comando.Tambien una lista donde se podran ver todos los comandos que se puedan ejecutar
-
-Validacion: Funcion que valida que el comando ingresado sea correcto
-"""       
-class Shell: 
-
-    def __init__(self,consola):
-        self.consola = consola
-        self.Window1()
-        self.comando = ""
-
     """
     Window: Funcion que crea la ventana de la shell, y se le dan algunas carcteristicas como una entrada de texto,
     un boton para ejecutar una funcion y una lista donde se podran ver todos los comandos que se puedan ejecutar
@@ -283,7 +409,7 @@ class Shell:
         
         #Configuracion de la ventana
 
-        self.consola.configure(bg = "dodgerblue4")
+        self.consola.configure(bg ="dodgerblue4")
 
         #Esta pare permitira ver los comaandos que se pueden ingresar
 
@@ -332,49 +458,49 @@ class Shell:
         self.comando = self.Comando.get()
     
         if self.comando == "sayhello": #Comando que hace que el robot diga hola
-                Robot.sayhello(self)
+                self.sayhello()
 
         elif self.comando == "built": #Comando que hace que el robot diga el dia de su creacion
-                Robot.built(self)
+                self.built()
 
         elif self.comando == "forward":
-                Robot.forward(self)
+                self.forward()
 
         elif self.comando == "backward":
-                self.robot.backward(self)
+                self.robot.backward()
 
         elif self.comando == "stop": #Comando que hace que el robot se detenga
-                Robot.Stop(self)
+                self.Stop()
 
         elif self.comando == "turnright":
-                Robot.turnright(self)
+                self.turnright()
 
         elif self.comando == "turnleft":
-                Robot.turnleft(self)
+                self.turnleft()
 
         elif self.comando == "turnaround":
-                Robot.turnaround(self)
+                self.turnaround()
 
         elif self.comando == "dance": #Comando que hace que el robot baile
-                Robot.dance(self)
+                self.dance()
 
         elif self.comando == "music_on": #Comando que hace que el robot reproduzca musica
-                Robot.music_on(self)
+                self.music_on()
 
         elif self.comando == "music_off": #Comando que hace que el robot deje de reproducir musica
-                Robot.music_off(self)
+                self.music_off()
 
         elif self.comando == "light_on": #Comando que hace que el robot encienda la luz
-                Robot.light_on(self)
+                self.light_on()
 
         elif self.comando == "light_off": #Comando que hace que el robot apague la luz
-                Robot.light_off(self)
+                self.light_off()
 
         elif self.comando == "smile": #Comando que hace que el robot se sonria
-                Robot.smile(self)
+                self.smile()
 
         elif self.comando == "cry": #Comando que hace que el robot se ponga triste
-                Robot.cry(self)
+                self.cry()
         else:
                 messagebox.showinfo("Error"," I dont understand")
 
@@ -401,7 +527,6 @@ Lo que se ejecuta apenas se corre el codigo de las clases
 #Ventana principal
 window = Tk()
 window.geometry('800x700+0+0') #Tamaño de la ventana
-ventana_simulacion = Robot("Abdulio","robot.png",time.asctime(),100,window) #Ventana de simulacion
 window.title("Robot Simulator") #Titulo de la ventana
 window.iconbitmap('Adicionales/robot.ico') #Añade un icono distinto
 window.resizable(False,False) #No permite cambiar el tamaño de la ventana
@@ -411,7 +536,7 @@ shell = Tk()
 shell.geometry('550x700+800+0') #Tamaño de la ventana
 shell.title("Shell Robot") #Titulo de la ventana
 shell.iconbitmap('Adicionales/robot.ico') #Añade un icono distinto
-shell_simulation = Shell(shell) #Ventana de simulacion
+shell_simulation = Robot(robot_info[0][0],robot_info[0][1],robot_info[0][2],robot_info[0][3],window,shell) #Ventana de simulacion
 shell.resizable(False,False) #No permite cambiar el tamaño de la ventana
 
  
