@@ -78,7 +78,6 @@ class Robot:
         self.Window1()
         self.comando = ""
 
-
     """
     Window: ventana principal
     E: No recibe parametros
@@ -87,17 +86,18 @@ class Robot:
     """	
     def Window(self):
 
-        self.imagen1 = Fondo("Fondo.png")
-        self.Lbl = Label(self.ventana_robot, image = self.imagen1).place(x = 0,y = 0)
+        #self.imagen1 = Fondo("Fondo.png")
+        #self.Lbl = Label(self.ventana_robot, image = self.imagen1).place(x = 0,y = 0)
+        self.ventana_robot.configure(bg = "white")
         self.ventana_robot.update()
 
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
         self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
-        time.sleep(0.05)
-        self.robot2 = Imagenes("derecha 1.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot2)
+        time.sleep(1)
+        self.robot1 = Imagenes("derecha 1.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
         self.IMG2.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
@@ -105,11 +105,6 @@ class Robot:
         self.IMG = Label(self.ventana_robot, image = self.robot1)
         self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
-
-        
-
-        
-
 
     """
     Drak: Funcion hace que simule que el robot se va a descanzar cerrando la ventana en donde el se encuentra
@@ -194,11 +189,11 @@ class Robot:
         self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
-        self.robot2 = Imagenes("derecha 1.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot2)
+        self.robot1 = Imagenes("derecha 1.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
         self.IMG2.place(x = 200, y = 300)
         self.ventana_robot.update()
-        time.sleep(1)
+        time.sleep(0.05)
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
         self.IMG.place(x = 200, y = 300)
@@ -220,17 +215,58 @@ class Robot:
         messagebox.showinfo("","I was created on"  + robot_info[0][2])
         messagebox.showinfo("","Im ready to play with you")
 
-    #Funcion que hace que el robot se mueva hacia adelante
-    def forward(self): # falta logica de validacion para las imagenes
-        self.forward(100)
-        self.Stop()
-        print("I am moving forward")
+    """
+    forward: Funcion que hace que el robot se mueva hacia adelante
+    E: self
+    S: Mensaje de movimiento hacia adelante y el movimiento
+    R: No aplica
+    """
+    def forward(self): 
+
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("zoom.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
+
+        messagebox.showinfo("","I am moving forward")
 
     #Funcion que hace que el robot se mueva hacia atras
     def backward(self): # falta logica de validacion para las imagenes
-        self.forward(-100)
-        self.Stop()
-        print("I am moving backward") 
+        
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(1)
+        self.robot1 = Imagenes("atras.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
+
+        messagebox.showinfo("","I am moving backward")
 
     """
     Stop: Funcion que hace que el robot se detenga
@@ -238,29 +274,116 @@ class Robot:
     S: Mensaje de detencion
     R: No aplica
     """
-    def Stop(self): 
-        stop()
+    def Stop(self):
+        pygame.mixer.music.stop() 
+        self.stop()
+        messagebox.showinfo("I am stoped")
+
+    """
+    turnright: Funcion que hace que el robot se mueva hacia la derecha
+    E: self
+    S: Mensaje de movimiento hacia la derecha y el movimiento
+    R: No aplica
+    """
+    def turnright(self): 
+        
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("derecha.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("derecha 1.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
 
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
         pygame.mixer.music.play()
-        messagebox.showinfo("I am stoped")
 
-    #Funcion que hace que gire el robot hacia la derecha
-    def turnright(self): # falta logica de validacion para las imagenes
-        self.right(90)
-        print("I am turning right")
+        messagebox.showinfo("","I am turning right")
 
-    #Funcion que hace que gira el robot hacia la izquierda
-    def turnleft(self): # falta logica de validacion para las imagenes
-        self.left(90)
-        print("I am turning left")
+    """
+    turnleft: Funcion que hace que el robot gire hacia la izquierda
+    E: self
+    S: Mensaje de giro hacia la izquierda y el giro
+    R: No aplican
+    """
+    def turnleft(self): 
+             
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("izquierda.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
+
+        messagebox.showinfo("","I am turning right")
 
     #Funcion que hace que el robot de una vuelta completa
     def turnaround(self): # falta logica de validacion para las imagenes
-        self.right(180)
-        print("I am turning around")
+                
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("izquierda.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("derecha.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("derecha 1.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("derecha.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
+        self.IMG2.place(x = 200, y = 300)
+        self.ventana_robot.update()
 
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
+
+        messagebox.showinfo("","I am turning around")
     #Funcion que hace que el robot baile
     def dance(self): #Faltan las imagenes que simularan el movimiento
         for i in range(4):
@@ -324,13 +447,6 @@ class Robot:
       pygame.mixer.init()
       pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
       pygame.mixer.music.play()
-
-      self.feliz = Imagenes("feliz.png",(100,100))
-      self.IMG = Label(self.ventana_robot, image = self.feliz)
-      self.IMG.place(x = 350, y =100)
-      time.sleep(2)
-      self.ventana_robot.update()
-
 
       messagebox.showinfo("","I am smiling")
       
@@ -419,7 +535,7 @@ class Robot:
         self.ordenes.insert(self.item1,END,text = "built")
         self.ordenes.insert(self.item1,END,text = "forward")
         self.ordenes.insert(self.item1,END,text = "backward")
-        self.ordenes.insert(self.item1,END,text = "Stop")
+        self.ordenes.insert(self.item1,END,text = "stop")
         self.ordenes.insert(self.item1,END,text = "turnright")
         self.ordenes.insert(self.item1,END,text = "turnleft")
         self.ordenes.insert(self.item1,END,text = "dance")
@@ -539,7 +655,6 @@ shell.iconbitmap('Adicionales/robot.ico') #Añade un icono distinto
 shell_simulation = Robot(robot_info[0][0],robot_info[0][1],robot_info[0][2],robot_info[0][3],window,shell) #Ventana de simulacion
 shell.resizable(False,False) #No permite cambiar el tamaño de la ventana
 
- 
 #Condicion para que se cierre la ventana, nos permite cerrar las dos ventanas al mismo tiempo
 window.protocol ("WM_DELETE_WINDOW", close) #Si se cierra la ventana window, se cierra la ventana shell
 shell.protocol ("WM_DELETE_WINDOW", close) # Si se cierra la ventana shell, se cierra la ventana window
