@@ -1,3 +1,20 @@
+#Codigos de las imagenes
+"""
+1 = normal
+2 = derecha
+3 = derecha 1
+4= izquierda
+5 = zoom
+6 = atras
+7 = Virus
+8 = antes exp
+9 = explo 1
+10 = explo 2
+11 = explo 3
+12 = explo 4
+13 = explo 5
+14 = explo 6
+"""
 
 """
 Bibliotecas usadas
@@ -46,7 +63,7 @@ R:None
 S:None
 """
 def leerRobot():
-    with open("robot_info.csv",'r') as csvfile:
+    with open("robotInfo.csv",'r') as csvfile:
         csvreader = csv.reader(csvfile)
         for line in csvreader:
             robot_info.append(line)
@@ -55,7 +72,7 @@ def leerRobot():
 Funcion que escribe en el archivo de texto(Actualiza el archivo)
 """
 def escribirR():
-    with open("robot_info.csv",'w',newline="") as csvfile:
+    with open("robotInfo.csv",'w',newline="") as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerows(robot_info)
 
@@ -85,27 +102,390 @@ class Robot:
     R: No tiene restricciones
     """	
     def Window(self):
-
-        #self.imagen1 = Fondo("Fondo.png")
-        #self.Lbl = Label(self.ventana_robot, image = self.imagen1).place(x = 0,y = 0)
+        print(robot_info[0][1])
         self.ventana_robot.configure(bg = "white")
         self.ventana_robot.update()
 
-        self.robot1 = Imagenes("normal.png",(400,400))
-        self.IMG = Label(self.ventana_robot, image = self.robot1)
-        self.IMG.place(x = 200, y = 300)
-        self.ventana_robot.update()
-        time.sleep(1)
-        self.robot1 = Imagenes("derecha 1.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
-        self.ventana_robot.update()
-        time.sleep(0.05)
-        self.robot1 = Imagenes("normal.png",(400,400))
-        self.IMG = Label(self.ventana_robot, image = self.robot1)
-        self.IMG.place(x = 200, y = 300)
-        self.ventana_robot.update()
+        if  1 == int(robot_info[0][1]): 
 
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(1)
+            self.robot1 = Imagenes("derecha 1.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 5:
+
+            self.robot1 = Imagenes("zoom.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 6:
+
+            self.robot1 = Imagenes("atras.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 2: 
+
+            self.robot1 = Imagenes("derecha.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)  
+            self.robot1 = Imagenes("derecha 1.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+
+        elif int(robot_info[0][1]) == 3: 
+
+            self.robot1 = Imagenes("derecha 1.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 4:
+
+            self.robot1 = Imagenes("izquierda.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+
+        elif int(robot_info[0][1]) == 8:
+
+            self.robot1 = Imagenes("antes exp.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            pygame.mixer.music.load('Adicionales/explosion sonido.mp3')
+            pygame.mixer.music.play()
+            self.robot1 = Imagenes("explo 1.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 2.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 3.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 4.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 5.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 9:
+
+            self.robot1 = Imagenes("explo 1.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 2.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 3.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 4.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 5.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+
+        elif int(robot_info[0][1]) == 10:
+
+            self.robot1 = Imagenes("explo 2.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 3.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 4.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 5.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+
+        elif int(robot_info[0][1]) == 11:
+    
+            self.robot1 = Imagenes("explo 3.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 4.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 5.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+
+        elif int(robot_info[0][1])== 12:
+
+            self.robot1 = Imagenes("explo 4.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 5.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 13:
+             
+            self.robot1 = Imagenes("explo 5.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 14:
+            
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+        
+        elif int(robot_info[0][1]) == 7:
+                        
+            self.robot1 = Imagenes("Virus.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(0.05)   
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("izquierda.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("derecha.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("derecha 1.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("derecha.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("atras.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("zoom.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("normal.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("antes exp.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            pygame.mixer.music.load('Adicionales/explosion sonido.mp3')
+            pygame.mixer.music.play()
+            self.robot1 = Imagenes("explo 1.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 2.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 3.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 4.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 5.png",(400,400))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+            time.sleep(0.05)
+            self.robot1 = Imagenes("explo 6.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 0, y = 0)
+            self.ventana_robot.update()
+            time.sleep(5)
+            self.robot1 = Imagenes("normal.png",(800,700))
+            self.IMG = Label(self.ventana_robot, image = self.robot1)
+            self.IMG.place(x = 200, y = 300)
+            self.ventana_robot.update()
+
+        else:
+             messagebox.showerror("Error", "No se pudo encontrar la imagen")
+    
     """
     Drak: Funcion hace que simule que el robot se va a descanzar cerrando la ventana en donde el se encuentra
     E: No recibe parametros
@@ -190,14 +570,18 @@ class Robot:
         self.ventana_robot.update()
         time.sleep(0.05)
         self.robot1 = Imagenes("derecha 1.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 3
+        escribirR
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
         self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
+        robot_info[0][1] = 1
+        escribirR()
 
         messagebox.showinfo("","Hi!!!\nMy name is " + robot_info[0][0] + " \nand today is " + time.asctime())
 
@@ -229,14 +613,18 @@ class Robot:
         self.ventana_robot.update()
         time.sleep(0.05)
         self.robot1 = Imagenes("zoom.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 5
+        escribirR()
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
         self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
+        robot_info[0][1] = 1
+        escribirR()
 
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
@@ -244,8 +632,13 @@ class Robot:
 
         messagebox.showinfo("","I am moving forward")
 
-    #Funcion que hace que el robot se mueva hacia atras
-    def backward(self): # falta logica de validacion para las imagenes
+    """
+    backward: Funcion que hace que el robot se mueva hacia atras
+    E: self
+    S: Mensaje de movimiento hacia atras y el movimiento
+    R: No aplica
+    """
+    def backward(self):
         
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
@@ -253,14 +646,18 @@ class Robot:
         self.ventana_robot.update()
         time.sleep(1)
         self.robot1 = Imagenes("atras.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 6
+        escribirR()
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
         self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
+        robot_info[0][1] = 1
+        escribirR()
 
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
@@ -293,19 +690,25 @@ class Robot:
         self.ventana_robot.update()
         time.sleep(0.05)
         self.robot1 = Imagenes("derecha.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 2
+        escribirR()
         self.robot1 = Imagenes("derecha 1.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 3
+        escribirR()
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
         self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
+        robot_info[0][1] = 1
+        escribirR()
 
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
@@ -327,13 +730,18 @@ class Robot:
         self.ventana_robot.update()
         time.sleep(0.05)
         self.robot1 = Imagenes("izquierda.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 4
+        escribirR()
         self.robot1 = Imagenes("normal.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        robot_info[0][1] = 1
+        escribirR()
 
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
@@ -341,8 +749,13 @@ class Robot:
 
         messagebox.showinfo("","I am turning right")
 
-    #Funcion que hace que el robot de una vuelta completa
-    def turnaround(self): # falta logica de validacion para las imagenes
+    """
+    turnaround: Funcion que hace que el robot gire 180 grados
+    E: self
+    S: Mensaje de giro de 180 grados y el giro
+    R: No aplica
+    """
+    def turnaround(self):
                 
         self.robot1 = Imagenes("normal.png",(400,400))
         self.IMG = Label(self.ventana_robot, image = self.robot1)
@@ -350,48 +763,208 @@ class Robot:
         self.ventana_robot.update()
         time.sleep(0.05)
         self.robot1 = Imagenes("izquierda.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 4
+        escribirR()
         self.robot1 = Imagenes("normal.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 1
+        escribirR()
         self.robot1 = Imagenes("derecha.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 2
+        escribirR()
         self.robot1 = Imagenes("derecha 1.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 3
+        escribirR()
         self.robot1 = Imagenes("derecha.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
         time.sleep(0.05)
+        robot_info[0][1] = 2
+        escribirR()
         self.robot1 = Imagenes("normal.png",(400,400))
-        self.IMG2 = Label(self.ventana_robot, image = self.robot1)
-        self.IMG2.place(x = 200, y = 300)
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
         self.ventana_robot.update()
+        robot_info[0][1] = 1
+        escribirR()
 
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
         pygame.mixer.music.play()
 
         messagebox.showinfo("","I am turning around")
-    #Funcion que hace que el robot baile
-    def dance(self): #Faltan las imagenes que simularan el movimiento
-        for i in range(4):
-            self.forward(100)
-            self.right(90)
-        self.Stop()
-        print("I am dancing")
+    
+    """
+    dance: Funcion que hace que el robot haga una danza
+    E: self
+    S: Mensaje de danza y la danza
+    R: No aplica
+    """
+    def dance(self):
+         
+        pygame.mixer.init()
+        pygame.mixer.music.load('Adicionales/BB-8 sound 2.mp3')
+        pygame.mixer.music.play()
 
+        messagebox.showinfo("","I am going to $%#&/")
+             
+        self.robot1 = Imagenes("Virus.png",(800,700))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 0, y = 0)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 7
+        escribirR()     
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 1
+        escribirR()
+        self.robot1 = Imagenes("izquierda.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 4
+        escribirR()
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 1
+        escribirR()
+        self.robot1 = Imagenes("derecha.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 2
+        escribirR()
+        self.robot1 = Imagenes("derecha 1.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 3
+        escribirR()
+        self.robot1 = Imagenes("derecha.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 2
+        escribirR()
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 1
+        escribirR()
+        self.robot1 = Imagenes("atras.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 6
+        escribirR()
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 1
+        escribirR()
+        self.robot1 = Imagenes("zoom.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 5
+        escribirR()
+        self.robot1 = Imagenes("normal.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 1
+        escribirR()
+        self.robot1 = Imagenes("antes exp.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 8
+        escribirR()
+        pygame.mixer.music.load('Adicionales/explosion sonido.mp3')
+        pygame.mixer.music.play()
+        self.robot1 = Imagenes("explo 1.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 9
+        escribirR()
+        self.robot1 = Imagenes("explo 2.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 10
+        escribirR()
+        self.robot1 = Imagenes("explo 3.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 11
+        escribirR()
+        self.robot1 = Imagenes("explo 4.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 12
+        escribirR()
+        self.robot1 = Imagenes("explo 5.png",(400,400))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 200, y = 300)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 13
+        escribirR()
+        self.robot1 = Imagenes("explo 6.png",(800,700))
+        self.IMG = Label(self.ventana_robot, image = self.robot1)
+        self.IMG.place(x = 0, y = 0)
+        self.ventana_robot.update()
+        time.sleep(0.05)
+        robot_info[0][1] = 14
+        escribirR()
+
+        escribirR()
+        messagebox.showerror("","The robot has been destroyed")
+        self.ventana_robot.destroy()
+        self.consola.destroy()
+     
     """
     music_on: Funcion que hace que el robot reproduzca musica
     E: self
@@ -399,6 +972,7 @@ class Robot:
     R: No aplica
     """
     def music_on(self):
+
         pygame.mixer.init()
         pygame.mixer.music.load('Adicionales/Welcome to the Jungle.mp3')
         pygame.mixer.music.play(-1)
